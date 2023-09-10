@@ -8,6 +8,7 @@ import { WarsModule } from './wars/wars.module';
 import Env from './environment/index';
 import Cors from './cors';
 import { ValidationPipe } from '@nestjs/common';
+import { PlanetsModule } from './planets/planets.module';
 async function bootstrap() {
   await Env.init();
   await Cors.init();
@@ -32,7 +33,7 @@ async function bootstrap() {
     .addTag('wars')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [WarsModule],
+    include: [WarsModule, PlanetsModule],
   });
   SwaggerModule.setup('api', app, document);
 

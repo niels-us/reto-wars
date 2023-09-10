@@ -15,6 +15,7 @@ import { ValidationPipe } from '@nestjs/common';
 import { WarsModule } from './wars/wars.module';
 import Env from './environment/index';
 import Cors from './cors';
+import { PlanetsModule } from './planets/planets.module';
 
 const binaryMimeTypes: string[] = [];
 
@@ -61,7 +62,7 @@ async function bootstrapServer(): Promise<Server> {
       .addTag('wars')
       .build();
     const document = SwaggerModule.createDocument(app, config, {
-      include: [WarsModule],
+      include: [WarsModule, PlanetsModule],
     });
     SwaggerModule.setup('api', app, document);
 
