@@ -41,5 +41,5 @@ lerna-debug.log*
 # Slint
 .eslintcache
 /.build
-
+/test
 .serverless
