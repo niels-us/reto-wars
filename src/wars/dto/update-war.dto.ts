@@ -1,5 +1,19 @@
-// import { PartialType } from '@nestjs/mapped-types';
-import { PartialType } from '@nestjs/swagger';
-import { CreateWarDto } from './create-war.dto';
+import { ApiProperty } from '@nestjs/swagger';
+import { IWars } from '../struct/wars.struct';
 
-export class UpdateWarDto extends PartialType(CreateWarDto) {}
+export class UpdateWarDto implements IWars {
+  @ApiProperty({
+    required: true,
+  })
+  name: string;
+
+  @ApiProperty({
+    required: true,
+  })
+  height: string;
+
+  @ApiProperty({
+    required: true,
+  })
+  mass: string;
+}

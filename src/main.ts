@@ -7,10 +7,17 @@ import sequelize from './database/db-connection';
 import { WarsModule } from './wars/wars.module';
 import Env from './environment/index';
 import Cors from './cors';
+import { ValidationPipe } from '@nestjs/common';
 async function bootstrap() {
   await Env.init();
   await Cors.init();
   const app = await NestFactory.create(AppModule, { bufferLogs: true });
+  app.useGlobalPipes(
+    new ValidationPipe({
+      whitelist: true,
+      forbidNonWhitelisted: true,
+    }),
+  );
   app.enableCors({
     origin: Cors.ORIGIN_CORS,
     methods: ['*'],

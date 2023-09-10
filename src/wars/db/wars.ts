@@ -10,13 +10,14 @@ export default class WarsDB {
     return await Wars.create(params);
   }
   async findAll(query) {
-    const where: {
-      name?: string;
-    } = {};
-    if (query.name) where.name = query.name;
+    console.log(query);
+    // const where: {
+    //   name?: string;
+    // } = {};
+    // if (query.name) where.name = query.name;
     const include = [];
     return Wars.findAll({
-      where,
+      where: { query },
       include,
     });
   }

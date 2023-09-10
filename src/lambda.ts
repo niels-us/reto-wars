@@ -21,8 +21,6 @@ const binaryMimeTypes: string[] = [];
 let cachedServer: Server;
 
 async function bootstrapServer(): Promise<Server> {
-  await Env.init();
-  await Cors.init();
   if (!cachedServer) {
     const expressApp = express();
     const app = await NestFactory.create(
@@ -40,8 +38,13 @@ async function bootstrapServer(): Promise<Server> {
     app.use(eventContext());
 
     await Env.init();
-    // await Cors.init();
-    app.useGlobalPipes(new ValidationPipe());
+    await Cors.init();
+    app.useGlobalPipes(
+      new ValidationPipe({
+        whitelist: true,
+        forbidNonWhitelisted: true,
+      }),
+    );
     // app.use(rawBodyMiddleware());
     // app.enableCors({
     //   origin: Cors.ORIGIN_CORS,
