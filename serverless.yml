@@ -1,0 +1,27 @@
+service: api-wars
+
+plugins:
+  - 'serverless-plugin-typescript'
+  - serverless-plugin-optimize
+  - serverless-offline
+
+provider:
+  name: aws
+  runtime: nodejs18.x
+  region: us-east-1
+
+package:
+  exclude:
+    - .serverless/**
+    - cache/**
+    - reports/**
+    - test/**
+
+functions:
+  main:
+    timeout: 120
+    handler: src/lambda.handler
+    events:
+      - http:
+          method: any
+          path: /{any+}
