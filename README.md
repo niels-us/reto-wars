@@ -1,73 +1,211 @@
-<p align="center">
-  <a href="http://nestjs.com/" target="blank"><img src="https://nestjs.com/img/logo-small.svg" width="200" alt="Nest Logo" /></a>
-</p>
+# Reto técnico
 
-[circleci-image]: https://img.shields.io/circleci/build/github/nestjs/nest/master?token=abc123def456
-[circleci-url]: https://circleci.com/gh/nestjs/nest
+## Nombre: Niels Uchpa
 
-  <p align="center">A progressive <a href="http://nodejs.org" target="_blank">Node.js</a> framework for building efficient and scalable server-side applications.</p>
-    <p align="center">
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/v/@nestjs/core.svg" alt="NPM Version" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/l/@nestjs/core.svg" alt="Package License" /></a>
-<a href="https://www.npmjs.com/~nestjscore" target="_blank"><img src="https://img.shields.io/npm/dm/@nestjs/common.svg" alt="NPM Downloads" /></a>
-<a href="https://circleci.com/gh/nestjs/nest" target="_blank"><img src="https://img.shields.io/circleci/build/github/nestjs/nest/master" alt="CircleCI" /></a>
-<a href="https://coveralls.io/github/nestjs/nest?branch=master" target="_blank"><img src="https://coveralls.io/repos/github/nestjs/nest/badge.svg?branch=master#9" alt="Coverage" /></a>
-<a href="https://discord.gg/G7Qnnhy" target="_blank"><img src="https://img.shields.io/badge/discord-online-brightgreen.svg" alt="Discord"/></a>
-<a href="https://opencollective.com/nest#backer" target="_blank"><img src="https://opencollective.com/nest/backers/badge.svg" alt="Backers on Open Collective" /></a>
-<a href="https://opencollective.com/nest#sponsor" target="_blank"><img src="https://opencollective.com/nest/sponsors/badge.svg" alt="Sponsors on Open Collective" /></a>
-  <a href="https://paypal.me/kamilmysliwiec" target="_blank"><img src="https://img.shields.io/badge/Donate-PayPal-ff3f59.svg"/></a>
-    <a href="https://opencollective.com/nest#sponsor"  target="_blank"><img src="https://img.shields.io/badge/Support%20us-Open%20Collective-41B883.svg" alt="Support us"></a>
-  <a href="https://twitter.com/nestframework" target="_blank"><img src="https://img.shields.io/twitter/follow/nestframework.svg?style=social&label=Follow"></a>
-</p>
-  <!--[![Backers on Open Collective](https://opencollective.com/nest/backers/badge.svg)](https://opencollective.com/nest#backer)
-  [![Sponsors on Open Collective](https://opencollective.com/nest/sponsors/badge.svg)](https://opencollective.com/nest#sponsor)-->
+## Tabla de contenidos
 
-## Description
+- [Características funcionales](#Características-funcionales)
+- [Características técnicas](#Características-técnicas)
+- [Configuración](#Configuración)
+- [Scripts](#Scripts)
 
-[Nest](https://github.com/nestjs/nest) framework TypeScript starter repository.
+## Caracteristicas funcionales
 
-## Installation
+- Consulta dos API's de StarWars y combina la información de éstas con información ingresada a una base de datos DynamoDB
+  - People: https://swapi.py4e.com/api/people
+  - StarShips: https://swapi.py4e.com/api/starships
 
-```bash
-$ npm install
+## Características técnicas
+
+- Usa ES6/ES7 a través de Typescript
+- Utiliza el framework Serverless
+- Formatea el código usando Prettier y ESLint
+- Usa buenas prácticas usando ESLint
+- Utiliza AWS CLI para conectarse a AWS
+- Utiliza el framework Jest para ejecutar pruebas unitarias y de integración
+- Utiliza AWS-SDK para conectarse a DynamoDB
+- Tiene el archivo requerido para ejecutar SonarQube
+
+## Configuración
+
+La configuración está en el archivo no versionado serverless.yaml.
+
+## Scripts
+
+Todos los scripts deben ser ejecutados desde la carpeta raíz
+
+### `clean`
+
+Borra y elimina los directorios generados: cache, dist y reports
+
+```
+npm run clean
 ```
 
-## Running the app
+### `lint:code`
 
-```bash
-# development
-$ npm run start
+Valida las reglas de ESLint desde la carpeta src y muestra los resultados en consola
 
-# watch mode
-$ npm run start:dev
-
-# production mode
-$ npm run start:prod
+```
+npm run lint:code
 ```
 
-## Test
+### `lint:test`
 
-```bash
-# unit tests
-$ npm run test
+Valida las reglas de ESLint del código de las pruebas unitarias y de integración desde la carpeta test y muestra los resultados en consola
 
-# e2e tests
-$ npm run test:e2e
-
-# test coverage
-$ npm run test:cov
+```
+npm run lint:test
 ```
 
-## Support
+### `lint:report`
 
-Nest is an MIT-licensed open source project. It can grow thanks to the sponsors and support by the amazing backers. If you'd like to join them, please [read more here](https://docs.nestjs.com/support).
+Valida las reglas de ESLint desde la carpeta src y muestra los resultados en html
 
-## Stay in touch
+```
+npm run lint:report
+```
 
-- Author - [Kamil Myśliwiec](https://kamilmysliwiec.com)
-- Website - [https://nestjs.com](https://nestjs.com/)
-- Twitter - [@nestframework](https://twitter.com/nestframework)
+### `test`
 
-## License
+Ejecuta las pruebas unitarias y de integración
 
-Nest is [MIT licensed](LICENSE).
+```
+npm run test
+```
+
+### `test:unit`
+
+Ejecuta las pruebas unitarias
+
+```
+npm run test:unit
+```
+
+### `test:integration`
+
+Ejecuta las pruebas de integración
+
+```
+npm run test:integration
+```
+
+### `test:watch`
+
+Ejecuta todas las pruebas en modo de monitoreo constante
+
+```
+npm run test:watch
+```
+
+### `test:config`
+
+Muestra la configuración del framework de pruebas Jest
+
+```
+npm run test:config
+```
+
+### `test:clear`
+
+Borra la cache del framework de pruebas Jest
+
+```
+npm run test:clear
+```
+
+### `test:coverage`
+
+Ejecuta todas las pruebas de unitarias y de integración, y genera un reporte de coverage tanto en consola como en html
+
+```
+npm run test:coverage
+```
+
+### `test:coverage:unit`
+
+Ejecuta las pruebas unitarias y genera un reporte de coverage tanto en consola como en html
+
+```
+npm run test:coverage:unit
+```
+
+### `test:coverage:integration`
+
+Ejecuta las pruebas de integración y genera un reporte de coverage tanto en consola como en html
+
+```
+npm run test:coverage:integration
+```
+
+### `format`
+
+Formatea todos los archivos de la carpeta src usando Prettier
+
+```
+npm run format
+```
+
+### `format:fix`
+
+Formatea todos los archivos y corrige usando ESLint
+
+```
+npm run format:fix
+```
+
+### `prebuild`
+
+Ejecuta los script `clean` y `lint:report`
+
+```
+npm run prebuild
+```
+
+### `build`
+
+Transpila a javascript en la carpeta cache y luego minifica a la carpeta dist
+
+```
+npm run build
+```
+
+### `code:build`
+
+Ejecuta los script `prebuild` y `build`
+
+```
+npm run code:build
+```
+
+### `deploy`
+
+Despliega a AWS
+
+```
+npm run deploy
+```
+
+### `deploy:remove`
+
+Elimina todo lo desplegado a AWS
+
+```
+npm run deploy:remove
+```
+
+### `deploy:restart`
+
+Elimina todo lo desplegado a AWS y redespliega
+
+```
+npm run deploy:remove
+```
+
+### `deploy:build`
+
+Transpila los archivos de typescript y los minifica para el despligue. A continuación despliega a AWS.
+
+```
+npm run deploy:build
+```
