@@ -11,10 +11,10 @@ import {
   NotFoundException,
 } from '@nestjs/common';
 import { PlanetsService } from '../services/planets.service';
-import { CreatePlanetsDto } from '../dto/create-planet.dto';
-import { UpdatePlanetsDto } from '../dto/update-planet.dto';
+import { CreatePlanetsDto } from '../dto/create-planets.dto';
+import { UpdatePlanetsDto } from '../dto/update-planets.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetWrasQueryDTO } from '../dto/select-Planets.dto';
+import { GetWrasQueryDTO } from '../dto/select-planets.dto';
 import { IPlanetES } from '../struct/planets.struct';
 import { IEntityId, IRows } from '../../core/struc/response.struct';
 import {

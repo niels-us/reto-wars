@@ -1,10 +1,10 @@
 import { Module } from '@nestjs/common';
-import { WarsModule } from './wars/wars.module';
 import { PlanetsModule } from './planets/planets.module';
 import { SpeciesModule } from './species/species.module';
+import { PeoplesModule } from './people/peoples.module';
 
 @Module({
-  imports: [WarsModule, PlanetsModule, SpeciesModule],
+  imports: [PlanetsModule, SpeciesModule, PeoplesModule],
   controllers: [],
   providers: [],
 })

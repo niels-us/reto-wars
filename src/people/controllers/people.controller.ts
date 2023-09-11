@@ -10,33 +10,36 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { WarsService } from '../services/wars.service';
-import { CreateWarDto } from '../dto/create-war.dto';
-import { UpdateWarDto } from '../dto/update-war.dto';
+import { PeoplesService } from '../services/peoples.service';
+import { CreatePeoplesDto } from '../dto/create-peoples.dto';
+import { UpdatePeoplesDto } from '../dto/update-pleoples.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetWrasQueryDTO } from '../dto/select-war.dto';
-import { IWars } from '../struct/wars.struct';
-import { IEntityId, IRows } from '../struct/wars.response.struct';
-import { RowsResponseDTO } from '../dto/wars.response.dto';
+import { GetWrasQueryDTO } from '../dto/select-peoples.dto';
+import { IPeopleES } from '../struct/peoples.struct';
+import { IEntityId, IRows } from '../../core/struc/response.struct';
+import {
+  EntityIdResponseDTO,
+  RowsResponseDTO,
+} from '../../core/dto/response.dto';
 
-@Controller('wars')
-export class WarsController {
-  constructor(private readonly warsService: WarsService) {}
+@Controller('Peoples')
+export class PeoplesController {
+  constructor(private readonly peoplesService: PeoplesService) {}
 
   @Post()
-  @ApiTags('wars')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'Create by query' })
   @ApiResponse({
     status: 201,
     description: 'Successful.',
-    type: [CreateWarDto],
+    type: EntityIdResponseDTO,
   })
   @ApiResponse({
     status: 400,
     description: 'Error bad request.',
   })
-  async create(@Body() body: CreateWarDto): Promise<IEntityId> {
-    const response = await this.warsService.create(body);
+  async create(@Body() body: CreatePeoplesDto): Promise<IEntityId> {
+    const response = await this.peoplesService.create(body);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -44,7 +47,7 @@ export class WarsController {
   }
 
   @Get()
-  @ApiTags('wars')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -55,8 +58,8 @@ export class WarsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findAll(@Query() query: GetWrasQueryDTO): Promise<IWars[]> {
-    const response = this.warsService.findAll(query);
+  async findAll(@Query() query: GetWrasQueryDTO): Promise<IPeopleES[]> {
+    const response = this.peoplesService.findAll(query);
     if ((await response).error) {
       throw new InternalServerErrorException();
     }
@@ -64,7 +67,7 @@ export class WarsController {
   }
 
   @Get(':id')
-  @ApiTags('wars')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -75,8 +78,8 @@ export class WarsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findOne(@Param('id') id: number): Promise<IWars> {
-    const response = await this.warsService.findOne(id);
+  async findOne(@Param('id') id: number): Promise<IPeopleES> {
+    const response = await this.peoplesService.findOne(id);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -86,8 +89,8 @@ export class WarsController {
     return response.data;
   }
 
-  @Get('test/:id')
-  @ApiTags('wars')
+  @Get('translate/SWAPI/:id')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -98,19 +101,19 @@ export class WarsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findOneWars(@Param('id') id: number) {
-    const response = await this.warsService.findOneWars(id);
-    // if (response.error) {
-    //   throw new InternalServerErrorException();
-    // }
-    // if (!response.data) {
-    //   throw new NotFoundException();
-    // }
+  async findOnePeoples(@Param('id') id: number) {
+    const response = await this.peoplesService.findOnePeoples(id);
+    if (response.error) {
+      throw new InternalServerErrorException();
+    }
+    if (!response.data) {
+      throw new NotFoundException();
+    }
     return response.data;
   }
 
   @Patch(':id')
-  @ApiTags('wars')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'Update by parenId' })
   @ApiResponse({
     status: 201,
@@ -123,9 +126,9 @@ export class WarsController {
   })
   async update(
     @Param('id') id: number,
-    @Body() body: UpdateWarDto,
+    @Body() body: UpdatePeoplesDto,
   ): Promise<IRows> {
-    const response = await this.warsService.update(id, body);
+    const response = await this.peoplesService.update(id, body);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -133,7 +136,7 @@ export class WarsController {
   }
 
   @Delete(':id')
-  @ApiTags('wars')
+  @ApiTags('Peoples')
   @ApiOperation({ summary: 'Delete by id' })
   @ApiResponse({
     status: 201,
@@ -145,7 +148,7 @@ export class WarsController {
     description: 'Error bad request.',
   })
   async remove(@Param('id') id: number): Promise<IRows> {
-    const response = await this.warsService.remove(id);
+    const response = await this.peoplesService.remove(id);
     if (response.error) {
       throw new InternalServerErrorException();
     }

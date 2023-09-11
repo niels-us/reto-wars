@@ -11,9 +11,15 @@
 
 ## Caracteristicas funcionales
 
-- Consulta dos API's de StarWars y combina la información de éstas con información ingresada a una base de datos DynamoDB
+- Consulta tres API's de StarWars y combina la información de éstas con información ingresada a una base de datos MySQL
   - People: https://swapi.py4e.com/api/people
-  - StarShips: https://swapi.py4e.com/api/starships
+  - Planets: https://swapi.py4e.com/api/planets
+  - Species: https://swapi.py4e.com/api/species
+
+- Despliegue en AWS
+  - https://wars.nielsus.link/api#/Species
+  - https://wars.nielsus.link/api#/Peoples
+  - https://wars.nielsus.link/api#/planets  -
 
 ## Características técnicas
 
@@ -23,8 +29,7 @@
 - Usa buenas prácticas usando ESLint
 - Utiliza AWS CLI para conectarse a AWS
 - Utiliza el framework Jest para ejecutar pruebas unitarias y de integración
-- Utiliza AWS-SDK para conectarse a DynamoDB
-- Tiene el archivo requerido para ejecutar SonarQube
+- Utiliza AWS-SDK para conectarse a MySQL
 
 ## Configuración
 

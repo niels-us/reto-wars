@@ -11,9 +11,9 @@ import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { WarsModule } from './wars/wars.module';
 import { PlanetsModule } from './planets/planets.module';
 import { SpeciesModule } from './species/species.module';
+import { PeoplesModule } from './people/peoples.module';
 
 const binaryMimeTypes: string[] = [];
 
@@ -38,7 +38,7 @@ async function bootstrapServer(): Promise<Server> {
       .addTag('Start Wars')
       .build();
     const document = SwaggerModule.createDocument(app, config, {
-      include: [WarsModule, PlanetsModule, SpeciesModule],
+      include: [PlanetsModule, SpeciesModule, PeoplesModule],
     });
     SwaggerModule.setup('api', app, document);
 

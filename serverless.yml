@@ -33,9 +33,9 @@ functions:
           path: /species
           method: any
 
-  wars:
+  people:
     timeout: 120
-    handler: src/lambdaWars.handler
+    handler: src/lambdaPeoples.handler
     events:
       - http:
           path: /wars

@@ -4,12 +4,12 @@ import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
 import sequelize from './core/database/db-connection';
-import { WarsModule } from './wars/wars.module';
 import Env from './core/environment/index';
 import Cors from './core/cors';
 import { ValidationPipe } from '@nestjs/common';
 import { PlanetsModule } from './planets/planets.module';
 import { SpeciesModule } from './species/species.module';
+import { PeoplesModule } from './people/peoples.module';
 async function bootstrap() {
   await Env.init();
   await Cors.init();
@@ -29,7 +29,7 @@ async function bootstrap() {
     .addTag('wars')
     .build();
   const document = SwaggerModule.createDocument(app, config, {
-    include: [WarsModule, PlanetsModule, SpeciesModule],
+    include: [PlanetsModule, SpeciesModule, PeoplesModule],
   });
   SwaggerModule.setup('api', app, document);
 

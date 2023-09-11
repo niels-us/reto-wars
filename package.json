@@ -6,14 +6,18 @@
   "private": true,
   "license": "UNLICENSED",
   "scripts": {
+		"clean": "rimraf cache dist reports coverage",
     "build": "nest build",
     "format": "prettier --write \"src/**/*.ts\" \"test/**/*.ts\"",
     "start": "nest start",
     "start:dev": "nest start --watch",
     "start:debug": "nest start --debug --watch",
     "start:prod": "node dist/main",
-    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix",
-    "test": "jest",
+    "lint": "eslint \"{src,apps,libs,test}/**/*.ts\" --fix --cache --quiet",
+		"lint:code": "eslint --ext ts src/ -f stylish",
+		"lint:test": "eslint --ext ts test/ -f stylish",
+		"lint:report": "eslint --ext ts src/ -f html -o reports/lint.html",
+		"test": "jest  --coverage --passWithNoTests",
     "test:watch": "jest --watch",
     "test:cov": "jest --coverage",
     "test:debug": "node --inspect-brk -r tsconfig-paths/register -r ts-node/register node_modules/.bin/jest --runInBand",
@@ -79,7 +83,7 @@
       "json",
       "ts"
     ],
-    "rootDir": "src",
+    "rootDir": ".",
     "testRegex": ".*\\.spec\\.ts$",
     "transform": {
       "^.+\\.(t|j)s$": "ts-jest"
@@ -88,6 +92,11 @@
       "**/*.(t|j)s"
     ],
     "coverageDirectory": "../coverage",
-    "testEnvironment": "node"
+    "testEnvironment": "node",
+    "moduleNameMapper": {
+      "^src/(.*)$": "<rootDir>/src/$1",
+      "^src$": "<rootDir>/__mocks__/$1",
+      "^test$": "<rootDir>/$1"
+    }
   }
 }

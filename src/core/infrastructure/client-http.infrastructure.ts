@@ -35,4 +35,16 @@ export class ClientHttp extends Api {
       return { error };
     }
   }
+
+  async peoplesById(id: number) {
+    try {
+      this.setup();
+      const response = await this.get<any>(`/people/${id}`, null, {});
+      return {
+        data: response.data,
+      };
+    } catch (error) {
+      return { error };
+    }
+  }
 }
