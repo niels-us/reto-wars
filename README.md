@@ -87,14 +87,6 @@ Ejecuta las pruebas unitarias
 npm run test:unit
 ```
 
-### `test:integration`
-
-Ejecuta las pruebas de integración
-
-```
-npm run test:integration
-```
-
 ### `test:watch`
 
 Ejecuta todas las pruebas en modo de monitoreo constante
