@@ -18,10 +18,25 @@ package:
     - test/**
 
 functions:
-  main:
+  planets:
     timeout: 120
-    handler: src/lambda.handler
+    handler: src/lambdaPlanets.handler
     events:
       - http:
+          path: /planets
           method: any
+  wars:
+    timeout: 120
+    handler: src/lambdaWars.handler
+    events:
+      - http:
+          path: /wars
+          method: any
+          
+  swagger:
+    timeout: 120
+    handler: src/lambdaSwagger.handler
+    events:
+      - http:
           path: /{any+}
+          method: any

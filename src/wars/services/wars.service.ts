@@ -1,5 +1,5 @@
 import WarsDB from '../db/wars';
-import { ClientHttp } from '../../infrastructure/client-http.infrastructure';
+import { ClientHttp } from '../../core/infrastructure/client-http.infrastructure';
 import { IWars } from '../struct/wars.struct';
 import { IEntityId, IResponse, IRows } from '../struct/wars.response.struct';
 import { Injectable } from '@nestjs/common';

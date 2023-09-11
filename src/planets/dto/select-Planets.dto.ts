@@ -1,73 +1,75 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
-import { IPlanet, IPlanets } from '../struct/Planets.struct';
+import { IPlanetES } from '../struct/Planets.struct';
 
-export class GetWrasQueryDTO implements IPlanets {
+export class GetWrasQueryDTO implements IPlanetES {
+  @ApiProperty({ required: false })
   @IsOptional()
-  @ApiProperty({
-    required: false,
-  })
-  id?: number;
+  @IsString()
+  nombre: string;
 
+  @ApiProperty({ required: false })
   @IsOptional()
-  @ApiProperty({
-    required: false,
-  })
-  name: string;
+  @IsString()
+  periodo_rotacion: string;
 
+  @ApiProperty({ required: false })
   @IsOptional()
-  @ApiProperty({
-    required: false,
-  })
-  height: string;
+  @IsString()
+  periodo_orbital: string;
 
+  @ApiProperty({ required: false })
   @IsOptional()
-  @ApiProperty({
-    required: false,
-  })
-  mass: string;
-}
-
-export class PlanetDTO implements IPlanet {
   @IsString()
-  name: string;
+  diametro: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  rotation_period: string;
+  clima: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  orbital_period: string;
+  gravedad: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  diameter: string;
+  terreno: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  climate: string;
+  agua_superficial: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  gravity: string;
+  poblacion: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  terrain: string;
+  residentes: string[];
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  surface_water: string;
+  peliculas: string[];
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  population: string;
+  creado: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
-  residents: string[];
+  editado: string;
 
-  @IsString()
-  films: string[];
-
-  @IsString()
-  created: string;
-
-  @IsString()
-  edited: string;
-
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
   url: string;
 }

@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { ICount, IEntityId, IRows } from '../struct/planets.response.struct';
+import { ICount, IEntityId, IRows } from '../struc/response.struct';
 
 export class EntityIdResponseDTO implements IEntityId {
   @ApiProperty({

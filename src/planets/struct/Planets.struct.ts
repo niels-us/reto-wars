@@ -1,11 +1,4 @@
-export interface IPlanets {
-  id?: number;
-  name: string;
-  height: string;
-  mass: string;
-}
-
-export interface IPlanet {
+export interface IPlanetEN {
   name: string;
   rotation_period: string;
   orbital_period: string;
@@ -19,5 +12,22 @@ export interface IPlanet {
   films: string[];
   created: string;
   edited: string;
+  url: string;
+}
+export interface IPlanetES {
+  id?: number;
+  nombre: string;
+  periodo_rotacion: string;
+  periodo_orbital: string;
+  diametro: string;
+  clima: string;
+  gravedad: string;
+  terreno: string;
+  agua_superficial: string;
+  poblacion: string;
+  residentes: string[];
+  peliculas: string[];
+  creado: string;
+  editado: string;
   url: string;
 }

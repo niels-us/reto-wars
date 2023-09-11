@@ -15,21 +15,24 @@ import { CreatePlanetsDto } from '../dto/create-planet.dto';
 import { UpdatePlanetsDto } from '../dto/update-planet.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
 import { GetWrasQueryDTO } from '../dto/select-Planets.dto';
-import { IPlanets } from '../struct/Planets.struct';
-import { IEntityId, IRows } from '../struct/planets.response.struct';
-import { RowsResponseDTO } from '../dto/planets.response.dto';
+import { IPlanetES } from '../struct/Planets.struct';
+import { IEntityId, IRows } from '../../core/struc/response.struct';
+import {
+  EntityIdResponseDTO,
+  RowsResponseDTO,
+} from '../../core/dto/response.dto';
 
-@Controller('Planets')
+@Controller('planets')
 export class PlanetsController {
   constructor(private readonly planetsService: PlanetsService) {}
 
   @Post()
-  @ApiTags('Planets')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'Create by query' })
   @ApiResponse({
     status: 201,
     description: 'Successful.',
-    type: [CreatePlanetsDto],
+    type: EntityIdResponseDTO,
   })
   @ApiResponse({
     status: 400,
@@ -44,7 +47,7 @@ export class PlanetsController {
   }
 
   @Get()
-  @ApiTags('Planets')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -55,7 +58,7 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findAll(@Query() query: GetWrasQueryDTO): Promise<IPlanets[]> {
+  async findAll(@Query() query: GetWrasQueryDTO): Promise<IPlanetES[]> {
     const response = this.planetsService.findAll(query);
     if ((await response).error) {
       throw new InternalServerErrorException();
@@ -64,7 +67,7 @@ export class PlanetsController {
   }
 
   @Get(':id')
-  @ApiTags('Planets')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -75,7 +78,7 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findOne(@Param('id') id: number): Promise<IPlanets> {
+  async findOne(@Param('id') id: number): Promise<IPlanetES> {
     const response = await this.planetsService.findOne(id);
     if (response.error) {
       throw new InternalServerErrorException();
@@ -86,8 +89,8 @@ export class PlanetsController {
     return response.data;
   }
 
-  @Get('test/:id')
-  @ApiTags('Planets')
+  @Get('translate/SWAPI/:id')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -100,17 +103,17 @@ export class PlanetsController {
   })
   async findOnePlanets(@Param('id') id: number) {
     const response = await this.planetsService.findOnePlanets(id);
-    // if (response.error) {
-    //   throw new InternalServerErrorException();
-    // }
-    // if (!response.data) {
-    //   throw new NotFoundException();
-    // }
+    if (response.error) {
+      throw new InternalServerErrorException();
+    }
+    if (!response.data) {
+      throw new NotFoundException();
+    }
     return response.data;
   }
 
   @Patch(':id')
-  @ApiTags('Planets')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'Update by parenId' })
   @ApiResponse({
     status: 201,
@@ -133,7 +136,7 @@ export class PlanetsController {
   }
 
   @Delete(':id')
-  @ApiTags('Planets')
+  @ApiTags('planets')
   @ApiOperation({ summary: 'Delete by id' })
   @ApiResponse({
     status: 201,

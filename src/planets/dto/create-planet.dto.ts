@@ -1,84 +1,73 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IsOptional, IsString } from 'class-validator';
+import { IsArray, IsOptional, IsString } from 'class-validator';
+import { IPlanetES } from '../struct/Planets.struct';
 
-export class CreatePlanetsDto {
+export class CreatePlanetsDto implements IPlanetES {
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  name: string;
-
-  @ApiProperty({ required: false })
-  @IsOptional()
-  @IsString()
-  height: string;
+  nombre: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  mass: string;
+  periodo_rotacion: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // hair_color: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  periodo_orbital: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // skin_color: string;
+  @IsString()
+  diametro: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // eye_color: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  clima: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // birth_year: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  gravedad: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // gender: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  terreno: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // homeworld: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  agua_superficial: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // films: string[];
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  poblacion: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // species: string[];
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsArray()
+  residentes: [string];
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // vehicles: string[];
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsArray()
+  peliculas: [string];
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // starships: string[];
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  creado: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // created: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  editado: string;
 
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // edited: string;
-
-  // @ApiProperty({ required: false })
-  // @IsOptional()
-  // @IsString()
-  // url: string;
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  url: string;
 }

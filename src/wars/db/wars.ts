@@ -10,7 +10,6 @@ export default class WarsDB {
     return await Wars.create(params);
   }
   async findAll(query) {
-    console.log(query);
     const where: {
       name?: string;
     } = {};

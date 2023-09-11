@@ -3,22 +3,17 @@ dotenv.config();
 import { NestFactory } from '@nestjs/core';
 import { AppModule } from './app.module';
 import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import sequelize from './database/db-connection';
+import sequelize from './core/database/db-connection';
 import { WarsModule } from './wars/wars.module';
-import Env from './environment/index';
-import Cors from './cors';
+import Env from './core/environment/index';
+import Cors from './core/cors';
 import { ValidationPipe } from '@nestjs/common';
 import { PlanetsModule } from './planets/planets.module';
 async function bootstrap() {
   await Env.init();
   await Cors.init();
-  const app = await NestFactory.create(AppModule, { bufferLogs: true });
-  app.useGlobalPipes(
-    new ValidationPipe({
-      whitelist: true,
-      forbidNonWhitelisted: true,
-    }),
-  );
+  const app = await NestFactory.create(AppModule);
+  app.useGlobalPipes(new ValidationPipe());
   app.enableCors({
     origin: Cors.ORIGIN_CORS,
     methods: ['*'],
@@ -46,7 +41,6 @@ async function bootstrap() {
   } catch (error) {
     console.error(error);
   }
-
   await app.listen(process.env.APP_PORT || Env.APP_PORT);
 }
 bootstrap();

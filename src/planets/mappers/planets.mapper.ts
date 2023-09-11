@@ -1,22 +1,22 @@
-import { IPlanet } from '../struct/Planets.struct';
+import { IPlanetEN, IPlanetES } from '../struct/Planets.struct';
 
 export class PlanetsMapper {
-  static toProgramDetail(program: IPlanet) {
+  static toPlanet(planet: IPlanetEN): IPlanetES {
     return {
-      nombre: program.name,
-      período_rotación: program.rotation_period,
-      periodo_orbital: program.orbital_period,
-      diámetro: program.diameter,
-      clima: program.climate,
-      gravedad: program.gravity,
-      terreno: program.terrain,
-      agua_superficial: program.surface_water,
-      población: program.population,
-      residentes: [program.residents],
-      películas: [program.films],
-      creado: program.created,
-      editado: program.edited,
-      URL: program.url,
+      nombre: planet.name,
+      periodo_rotacion: planet.rotation_period,
+      periodo_orbital: planet.orbital_period,
+      diametro: planet.diameter,
+      clima: planet.climate,
+      gravedad: planet.gravity,
+      terreno: planet.terrain,
+      agua_superficial: planet.surface_water,
+      poblacion: planet.population,
+      residentes: planet.residents,
+      peliculas: planet.films,
+      creado: planet.created,
+      editado: planet.edited,
+      url: planet.url,
     };
   }
 }

@@ -1,4 +1,4 @@
-import sequelize, { SCHEMA } from '../../database/db-connection';
+import sequelize, { SCHEMA } from '../../core/database/db-connection';
 import { DataTypes, Model } from 'sequelize';
 
 export default class Wars extends Model {
