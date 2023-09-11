@@ -16,10 +16,10 @@
   - Planets: https://swapi.py4e.com/api/planets
   - Species: https://swapi.py4e.com/api/species
 
-- Despliegue en AWS
-  - https://wars.nielsus.link/api#/Species
-  - https://wars.nielsus.link/api#/Peoples
-  - https://wars.nielsus.link/api#/planets  -
+- Reto despliegado en AWS
+  - People: https://wars.nielsus.link/api#/Peoples
+  - Planets: https://wars.nielsus.link/api#/planets  -
+  - Species: https://wars.nielsus.link/api#/Species
 
 ## Características técnicas
 
