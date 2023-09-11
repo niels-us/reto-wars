@@ -1,6 +1,6 @@
 import { ApiProperty } from '@nestjs/swagger';
 import { IsOptional, IsString } from 'class-validator';
-import { IPlanetES } from '../struct/Planets.struct';
+import { IPlanetES } from '../struct/planets.struct';
 
 export class GetWrasQueryDTO implements IPlanetES {
   @ApiProperty({ required: false })

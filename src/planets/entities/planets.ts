@@ -1,4 +1,4 @@
-import { IPlanetES } from '../struct/Planets.struct';
+import { IPlanetES } from '../struct/planets.struct';
 import Planets from './planets.model';
 
 export default class PlanetsDB {

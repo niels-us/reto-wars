@@ -10,24 +10,24 @@ import {
   InternalServerErrorException,
   NotFoundException,
 } from '@nestjs/common';
-import { PlanetsService } from '../services/planets.service';
-import { CreatePlanetsDto } from '../dto/create-planet.dto';
-import { UpdatePlanetsDto } from '../dto/update-planet.dto';
+import { SpeciesService } from '../services/species.service';
+import { CreateSpeciesDto } from '../dto/create-species.dto';
+import { UpdateSpeciesDto } from '../dto/update-species.dto';
 import { ApiOperation, ApiResponse, ApiTags } from '@nestjs/swagger';
-import { GetWrasQueryDTO } from '../dto/select-Planets.dto';
-import { IPlanetES } from '../struct/planets.struct';
+import { GetWrasQueryDTO } from '../dto/select-species.dto';
+import { ISpecieES } from '../struct/species.struct';
 import { IEntityId, IRows } from '../../core/struc/response.struct';
 import {
   EntityIdResponseDTO,
   RowsResponseDTO,
 } from '../../core/dto/response.dto';
 
-@Controller('planets')
-export class PlanetsController {
-  constructor(private readonly planetsService: PlanetsService) {}
+@Controller('Species')
+export class SpeciesController {
+  constructor(private readonly speciesService: SpeciesService) {}
 
   @Post()
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'Create by query' })
   @ApiResponse({
     status: 201,
@@ -38,8 +38,8 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async create(@Body() body: CreatePlanetsDto): Promise<IEntityId> {
-    const response = await this.planetsService.create(body);
+  async create(@Body() body: CreateSpeciesDto): Promise<IEntityId> {
+    const response = await this.speciesService.create(body);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -47,7 +47,7 @@ export class PlanetsController {
   }
 
   @Get()
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -58,8 +58,8 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findAll(@Query() query: GetWrasQueryDTO): Promise<IPlanetES[]> {
-    const response = this.planetsService.findAll(query);
+  async findAll(@Query() query: GetWrasQueryDTO): Promise<ISpecieES[]> {
+    const response = this.speciesService.findAll(query);
     if ((await response).error) {
       throw new InternalServerErrorException();
     }
@@ -67,7 +67,7 @@ export class PlanetsController {
   }
 
   @Get(':id')
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -78,8 +78,8 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findOne(@Param('id') id: number): Promise<IPlanetES> {
-    const response = await this.planetsService.findOne(id);
+  async findOne(@Param('id') id: number): Promise<ISpecieES> {
+    const response = await this.speciesService.findOne(id);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -90,7 +90,7 @@ export class PlanetsController {
   }
 
   @Get('translate/SWAPI/:id')
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'List by query' })
   @ApiResponse({
     status: 201,
@@ -101,8 +101,8 @@ export class PlanetsController {
     status: 400,
     description: 'Error bad request.',
   })
-  async findOnePlanets(@Param('id') id: number) {
-    const response = await this.planetsService.findOnePlanets(id);
+  async findOneSpecies(@Param('id') id: number) {
+    const response = await this.speciesService.findOneSpecies(id);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -113,7 +113,7 @@ export class PlanetsController {
   }
 
   @Patch(':id')
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'Update by parenId' })
   @ApiResponse({
     status: 201,
@@ -126,9 +126,9 @@ export class PlanetsController {
   })
   async update(
     @Param('id') id: number,
-    @Body() body: UpdatePlanetsDto,
+    @Body() body: UpdateSpeciesDto,
   ): Promise<IRows> {
-    const response = await this.planetsService.update(id, body);
+    const response = await this.speciesService.update(id, body);
     if (response.error) {
       throw new InternalServerErrorException();
     }
@@ -136,7 +136,7 @@ export class PlanetsController {
   }
 
   @Delete(':id')
-  @ApiTags('planets')
+  @ApiTags('Species')
   @ApiOperation({ summary: 'Delete by id' })
   @ApiResponse({
     status: 201,
@@ -148,7 +148,7 @@ export class PlanetsController {
     description: 'Error bad request.',
   })
   async remove(@Param('id') id: number): Promise<IRows> {
-    const response = await this.planetsService.remove(id);
+    const response = await this.speciesService.remove(id);
     if (response.error) {
       throw new InternalServerErrorException();
     }

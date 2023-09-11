@@ -25,6 +25,14 @@ functions:
       - http:
           path: /planets
           method: any
+  species:
+    timeout: 120
+    handler: src/lambdaSpecies.handler
+    events:
+      - http:
+          path: /species
+          method: any
+
   wars:
     timeout: 120
     handler: src/lambdaWars.handler

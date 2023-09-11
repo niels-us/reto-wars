@@ -1,6 +1,6 @@
 import PlanetsDB from '../entities/planets';
 import { ClientHttp } from '../../core/infrastructure/client-http.infrastructure';
-import { IPlanetES } from '../struct/Planets.struct';
+import { IPlanetES } from '../struct/planets.struct';
 import { IEntityId, IResponse, IRows } from '../../core/struc/response.struct';
 import { Injectable } from '@nestjs/common';
 import { PlanetsMapper } from '../mappers/planets.mapper';

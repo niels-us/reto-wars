@@ -10,10 +10,7 @@ import * as express from 'express';
 import { NestFactory } from '@nestjs/core';
 import { ExpressAdapter } from '@nestjs/platform-express';
 import { AppModule } from './app.module';
-import { DocumentBuilder, SwaggerModule } from '@nestjs/swagger';
-import { WarsModule } from './wars/wars.module';
-import { PlanetsModule } from './planets/planets.module';
-import { SpeciesModule } from './species/species.module';
+import { ValidationPipe } from '@nestjs/common';
 
 const binaryMimeTypes: string[] = [];
 
@@ -25,22 +22,19 @@ async function bootstrapServer(): Promise<Server> {
     const app = await NestFactory.create(
       AppModule,
       new ExpressAdapter(expressApp),
-      { bufferLogs: true },
     );
     app.use(eventContext());
 
     await Env.init();
     await Cors.init();
-    const config = new DocumentBuilder()
-      .setTitle('Start Wars API')
-      .setDescription('The wars API description')
-      .setVersion('1.0')
-      .addTag('Start Wars')
-      .build();
-    const document = SwaggerModule.createDocument(app, config, {
-      include: [WarsModule, PlanetsModule, SpeciesModule],
+    app.useGlobalPipes(new ValidationPipe({}));
+    app.enableCors({
+      origin: Cors.ORIGIN_CORS,
+      methods: ['*'],
+      allowedHeaders: ['*'],
+      preflightContinue: false,
+      optionsSuccessStatus: 204,
     });
-    SwaggerModule.setup('api', app, document);
 
     await app.init();
     cachedServer = createServer(expressApp, undefined, binaryMimeTypes);

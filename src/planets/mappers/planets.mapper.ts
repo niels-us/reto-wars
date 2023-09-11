@@ -1,4 +1,4 @@
-import { IPlanetEN, IPlanetES } from '../struct/Planets.struct';
+import { IPlanetEN, IPlanetES } from '../struct/planets.struct';
 
 export class PlanetsMapper {
   static toPlanet(planet: IPlanetEN): IPlanetES {

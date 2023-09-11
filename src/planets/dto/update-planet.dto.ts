@@ -1,5 +1,5 @@
 import { ApiProperty } from '@nestjs/swagger';
-import { IPlanetES } from '../struct/Planets.struct';
+import { IPlanetES } from '../struct/planets.struct';
 import { IsArray, IsOptional, IsString } from 'class-validator';
 
 export class UpdatePlanetsDto implements IPlanetES {
@@ -18,6 +18,8 @@ export class UpdatePlanetsDto implements IPlanetES {
   @IsString()
   periodo_orbital: string;
 
+  @ApiProperty({ required: false })
+  @IsOptional()
   @IsString()
   diametro: string;
 

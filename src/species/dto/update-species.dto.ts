@@ -1,8 +1,8 @@
 import { ApiProperty } from '@nestjs/swagger';
+import { ISpecieES } from '../struct/species.struct';
 import { IsArray, IsOptional, IsString } from 'class-validator';
-import { IPlanetES } from '../struct/planets.struct';
 
-export class CreatePlanetsDto implements IPlanetES {
+export class UpdateSpeciesDto implements ISpecieES {
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
@@ -11,52 +11,57 @@ export class CreatePlanetsDto implements IPlanetES {
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  periodo_rotacion: string;
+  clasificacion: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  periodo_orbital: string;
+  designacion: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  diametro: string;
+  altura_promedio: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  clima: string;
+  colores_piel: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  gravedad: string;
+  colores_de_pelo: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  terreno: string;
+  colores_ojos: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  agua_superficial: string;
+  vida_promedio: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsString()
-  poblacion: string;
+  mundo_natal: string;
+
+  @ApiProperty({ required: false })
+  @IsOptional()
+  @IsString()
+  idioma: string;
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsArray()
-  residentes: [string];
+  personas: string[];
 
   @ApiProperty({ required: false })
   @IsOptional()
   @IsArray()
-  peliculas: [string];
+  peliculas: string[];
 
   @ApiProperty({ required: false })
   @IsOptional()

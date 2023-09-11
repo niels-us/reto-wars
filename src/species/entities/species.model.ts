@@ -1,26 +1,27 @@
 import sequelize, { SCHEMA } from '../../core/database/db-connection';
 import { DataTypes, Model } from 'sequelize';
-import { IPlanetES } from '../struct/planets.struct';
+import { ISpecieES } from '../struct/species.struct';
 
-export default class Planets extends Model implements IPlanetES {
+export default class Species extends Model implements ISpecieES {
   public id: number;
   public nombre: string;
-  public periodo_rotacion: string;
-  public periodo_orbital: string;
-  public diametro: string;
-  public clima: string;
-  public gravedad: string;
-  public terreno: string;
-  public agua_superficial: string;
-  public poblacion: string;
-  public residentes: string[];
+  public clasificacion: string;
+  public designacion: string;
+  public altura_promedio: string;
+  public colores_piel: string;
+  public colores_de_pelo: string;
+  public colores_ojos: string;
+  public vida_promedio: string;
+  public mundo_natal: string;
+  public idioma: string;
+  public personas: string[];
   public peliculas: string[];
   public creado: string;
   public editado: string;
   public url: string;
 }
 
-Planets.init(
+Species.init(
   {
     id: {
       type: DataTypes.INTEGER,
@@ -31,39 +32,43 @@ Planets.init(
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    periodo_rotacion: {
+    clasificacion: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    periodo_orbital: {
+    designacion: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    diametro: {
+    altura_promedio: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    clima: {
+    colores_piel: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    gravedad: {
+    colores_de_pelo: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    terreno: {
+    colores_ojos: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    agua_superficial: {
+    vida_promedio: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    poblacion: {
+    mundo_natal: {
       type: new DataTypes.STRING(255),
       allowNull: false,
     },
-    residentes: {
+    idioma: {
+      type: new DataTypes.STRING(255),
+      allowNull: false,
+    },
+    personas: {
       type: new DataTypes.JSON(),
       allowNull: false,
     },
@@ -86,7 +91,7 @@ Planets.init(
   },
   {
     sequelize,
-    modelName: 'Planets',
+    modelName: 'Species',
     schema: SCHEMA,
     defaultScope: {
       attributes: {

@@ -23,4 +23,16 @@ export class ClientHttp extends Api {
       return { error };
     }
   }
+
+  async speciesById(id: number) {
+    try {
+      this.setup();
+      const response = await this.get<any>(`/species/${id}`, null, {});
+      return {
+        data: response.data,
+      };
+    } catch (error) {
+      return { error };
+    }
+  }
 }
